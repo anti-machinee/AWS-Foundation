@@ -1,0 +1,10 @@
+# private
+
+# local
+opensources
+
+# vscode
+.vscode
+
+# docs
+*.pdf
