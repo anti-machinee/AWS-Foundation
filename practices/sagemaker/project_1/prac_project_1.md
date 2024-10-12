@@ -2,9 +2,6 @@
 - This project is "Create Regression or Classification Jobs for Tabular Data Using the AutoML API"
 - For concept learning purpose, the coding is not be completed
 
-# Requirements
-- See [1]
-
 # AWS guide
 - Specify experiment name, location of input data, target column, and output location
 - Specify the type of problem
@@ -13,7 +10,6 @@
 - Compare results
 - Download explainability and performance report
 
-# Steps
 ## Datasets
 - Support tabulars (CSV or Parquet) with samples datasets
 - Support images (PNG or JPG )and PDF files

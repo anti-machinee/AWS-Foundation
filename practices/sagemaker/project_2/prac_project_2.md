@@ -2,16 +2,12 @@
 - This project is "Create an AutoML job to fine-tune text generation models using the API"
 - For concept learning purpose, the coding is not be completed
 
-# Requirements
-- See [1]
-
 # AWS guide
 - Choose pre-trained model
 - Create instruction datasets
 - Store datasets in S3
 - Create access for related AWS services such as S3, JumpStart and SageMaker
 
-# Steps
 ## Models
 - Based on use case, choose a pre-trained model
 ## Instruction datasets
