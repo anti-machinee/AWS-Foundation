@@ -1,8 +1,6 @@
 # Introduction
-- This project follows [1] which is an AWS document
-- This project is about creating an experiment using SageMaker Autopilot
+- This project is "Create Regression or Classification Jobs for Tabular Data Using the AutoML API"
 - For concept learning purpose, the coding is not be completed
-- My works in in Steps section
 
 # Requirements
 - See [1]
@@ -15,33 +13,29 @@
 - Compare results
 - Download explainability and performance report
 
-# AWS offerings
-- CreateAutoMLJobV2 API
-- CreateAutoMLJob 
-
-## Steps
-### Datasets
+# Steps
+## Datasets
 - Support tabulars (CSV or Parquet) with samples datasets
 - Support images (PNG or JPG )and PDF files
-### Problem type
+## Problem type
 - Regression
 - Binary classification
 - Multiclass classification
-### Training modes
+## Training modes
 - Ensambling
 - Hyperparameter optimization
-### Algorithms supported
+## Algorithms supported
 - Ensemble algorithms
 - HPO algorithms
-### Metrics and validation
+## Metrics and validation
 - Metrics
 - Cross-validation
-### Deploy models
+## Deploy models
 - Using Autopilot UI
 - Using SageMaker APIs
-### Share models
+## Share models
 - Share model details and model performance with other users
-### Generate Notebooks
+## Generate Notebooks
 - For EDA
 - Propose best models
 
