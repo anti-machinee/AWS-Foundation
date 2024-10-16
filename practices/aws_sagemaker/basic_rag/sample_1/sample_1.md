@@ -2,7 +2,8 @@
 Note: This sample is not implemented in AWS. Document and source code are based on assumptions and references
 
 # Introduction
-- This sample is re-implementation of the [1]
+- This sample is analysis of the [1]
+- This sample is for understanding RAG with AWS in high level
 
 # Analysis
 
@@ -84,33 +85,67 @@ Note: This sample is not implemented in AWS. Document and source code are based 
             - Allow Lex to do SynthesizeSpeech and DetectSentiment
 - IAM policies
     - LambdaExecutionPolicy
+        - Allow Lambda function do InvokeEndpoint with Sagemaker
+        - Allow Lambda function do BatchQuery, Query with Kendra
+        - Allow some actions with DynamoDB
 #### Data store
 - Kendra
     - DocsKendraIndex
+        - Get RoleArn from KendraIndexRole 
     - KendraDocsDS
+        - Attach with DocsKendraIndex
+        - Setup DataSourceConfiguration
+        - Get RoleArn from KendraDSRole
 - Custom
     - DataSourceSync
+        - Use ServiceToken to link to LambdaFunction
 - DynamoDB
     - ConversationHistory
 #### Compute resources
 - Lambda
     - DataSourceSyncLambda
+        - Get RoleArn from DataSourceSyncLambdaRole
+        - Handle to ensure Kendra index is kept up to date with data source
+        - Source code is stored in Zipfile
     - LambdaFunction
+        - Get RoleArn from LambdaIAMRole
+        - Handle to do orchestration between Kendra, Sagemaker and Lex
+        - Source code is stored in S3
     - LexLambdaPermission
+        - Allow Lex to invoke Lambda function
     - LambdaLayer
+        - Allow users to package/share libraries, runtimes and other dependencies between Lambda function
+        - Source code is stored in S3
 - SageMaker
     - LLMModel
+        - Model data is stored in S3
+        - Model is executed in Docker ECR
     - LLMEndpointConfig
+        - Configure endpoint for LLMModel instance count/type, variant weight
+        - Add cfn_nag for security check
     - LLMEndpoint
+        - Create endpoint for LLMModel
 #### User interface
 - Lex
     - KendraLLMRAGBot
+        - Get RoleArn from BotRuntimeRole
+        - Secure data privacy
+        - Setup code hook for Lambda function
+        - Check NLU for intent
+        - Set intents greeting and fallback intent
+        - Setup locale and voice
 
-### Step 2: Target data store
-### Step 3: Query orchestration
-### Step 4: Conversational memory store
-### Step 5: User interface
-### Step 6: Deployment
+### Step 2: Query orchestration
+- Lambda function is trigger given an event
+- Event stores information of intent name
+- Check and mapping intent with intent handlers
+- Hello/Goodbye/Fallback/Standard intents are supported
+- For standard and fallback intents, there is an AI handler
+- In AI handler, there is a query orchestration
+    - Initialize LLM for text generation
+    - Initialize Kendra tool for data searching
+    - Initialize DynamoDB for conversational memory
+- Finally, AI handler run LangChain orchestrate
 
 # Implementation
 - See [1] for more details
