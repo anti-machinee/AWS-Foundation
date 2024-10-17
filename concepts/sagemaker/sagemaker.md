@@ -1,3 +1,3 @@
 # Official document
-- https://aws.amazon.com/sagemaker/?nc=sn&loc=0
+- https://aws.amazon.com/sagemaker/
 - https://docs.aws.amazon.com/sagemaker/
