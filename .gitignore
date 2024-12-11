@@ -8,3 +8,6 @@ opensources
 
 # docs
 *.pdf
+
+# compiled
+__pycache__

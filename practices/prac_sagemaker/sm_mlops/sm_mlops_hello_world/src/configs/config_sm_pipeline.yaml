@@ -1,0 +1,15 @@
+name:
+  - sm-mlops-hello-world
+steps: 
+    - name: PreprocessData
+      args:
+        - type: process
+    - name: TrainTensorflowModel
+      args:
+      - type: train
+    - name: EvaluateModelPerformance
+      args:
+      - type: evaluate
+    - name: MSE-Lower-Than-Threshold-Condition
+      args: 
+      - type: condition
