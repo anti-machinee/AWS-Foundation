@@ -1,0 +1,10 @@
+{
+    "inputTextTokenCount": 6,
+    "results": [
+        {
+            "tokenCount": 147,
+            "outputText": "\nA good student is someone who is committed to their studies and takes an active role in their learning process. They are not only focused on achieving good grades but also strive to gain knowledge and understanding of the subject matter. Good students are also respectful of their teachers and classmates, following classroom rules and being considerate of others. They are also self-motivated and can work independently to complete their assignments and projects. Additionally, good students are able to manage their time effectively, setting aside time for studying and other activities. They are also able to communicate effectively, both orally and in writing, and can articulate their ideas clearly. Finally, good students are curious and open-minded, always seeking to learn new things and explore new ideas.",
+            "completionReason": "FINISH"
+        }
+    ]
+}
