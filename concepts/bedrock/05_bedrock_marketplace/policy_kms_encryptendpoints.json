@@ -1,0 +1,9 @@
+{
+    "Sid": "Allow access for AmazonSageMaker-ExecutionRole",
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": "arn:aws:iam::111122223333:role/SagemakerExecutionRole"
+    },
+    "Action": "kms:CreateGrant",
+    "Resource": "*"
+}

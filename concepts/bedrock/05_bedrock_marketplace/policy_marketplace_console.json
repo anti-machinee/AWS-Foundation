@@ -1,0 +1,12 @@
+{
+    "Sid": "AllowConsoleS3AccessForBedrockMarketplace",
+    "Effect": "Allow",
+    "Action": [
+      "s3:GetObject",
+      "s3:GetBucketCORS",
+      "s3:ListBucket",
+      "s3:ListBucketVersions",
+      "s3:GetBucketLocation"
+    ],
+    "Resource": "*"
+}

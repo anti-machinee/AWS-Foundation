@@ -1,0 +1,29 @@
+{
+    
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "BedrockAll",
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel"
+            ],
+            "Resource": [
+                "arn:aws:bedrock:AWS Region:111122223333:marketplace/model-endpoint/all-access"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": ["sagemaker:InvokeEndpoint"],
+            "Resource": "arn:aws:sagemaker:AWS Region:111122223333:endpoint/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/project": "example-project-id",
+                    "aws:CalledViaLast": "bedrock.amazonaws.com"
+                }
+            }
+        }
+    ]
+
+}       
