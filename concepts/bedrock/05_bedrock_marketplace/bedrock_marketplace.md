@@ -69,6 +69,3 @@
 - Support
     - Invoke for all models
     - Converse for not all models
-
-# Related
-- https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateMarketplaceModelEndpoint.html
