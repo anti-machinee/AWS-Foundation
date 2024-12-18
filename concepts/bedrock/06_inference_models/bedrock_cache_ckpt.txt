@@ -1,0 +1,100 @@
+# Converse API
+## Message checkpoint
+"messages": [
+   {
+        "role": "user",
+        "content": [
+            {
+                "image": {
+                    "bytes": "asfb14tscve..."
+                }
+            },
+            {
+                "text": "What's is in this image?"
+            },
+            {
+                "cachePoint": {
+                    "type": "default"
+                }
+            }
+      ]
+  }
+]
+## System checkpoint
+"system": [ 
+{
+    "text": "You are an app that creates play lists for a radio station that plays rock and pop music. Only return song names and the artist. "
+},
+{
+    "cachePoint": {
+        "type": "default"
+    }
+}
+],
+## Tools checkpoint
+toolConfig={
+    "tools": [
+        {
+            "toolSpec": {
+                "name": "top_song",
+                "description": "Get the most popular song played on a radio station.",
+                "inputSchema": {
+                    "json": {
+                        "type": "object",
+                        "properties": {
+                            "sign": {
+                                "type": "string",
+                                "description": "The call sign for the radio station for which you want the most popular song. Example calls signs are WZPZ and WKRP."
+                            }
+                        },
+                        "required": [
+                            "sign"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+                "cachePoint": {
+                    "type": "default"
+                }
+        }
+    ]
+}
+## InvokeModel API
+body={
+        "anthropic_version": "bedrock-2023-05-31",
+        "system":"Reply concisely",
+        "messages": [
+            {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Describe the best way to learn programming."
+                },
+                {
+                    "type": "text",
+                    "text": "Add additional context here for the prompt that meets the minimum token requirement for your chosen model.",
+                    "cache_control": {
+                        "type": "ephemeral"
+                    }
+                }
+            ]
+            }
+        ],
+        "max_tokens": 2048,
+        "temperature": 0.5,
+        "top_p": 0.8,
+        "stop_sequences": [
+            "stop"
+        ],
+        "top_k": 250
+}
+- Set in code
+response = bedrock_client.invoke_model(
+    body=body,
+    modelId=modelId,
+    accept=accept,
+    contentType=contentType,
+    explicitPromptCaching='enabled')

@@ -1,0 +1,106 @@
+# Set tool definition
+{
+    "tools": [
+        {
+            "toolSpec": {
+                "name": "top_song",
+                "description": "Get the most popular song played on a radio station.",
+                "inputSchema": {
+                    "json": {
+                        "type": "object",
+                        "properties": {
+                            "sign": {
+                                "type": "string",
+                                "description": "The call sign for the radio station for which you want the most popular song. Example calls signs are WZPZ and WKRP."
+                            }
+                        },
+                        "required": [
+                            "sign"
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
+# Set request message
+[
+    {
+        "role": "user",
+        "content": [
+            {
+                "text": "What is the most popular song on WZPZ?"
+            }
+        ]
+    }
+]
+# Response after passing message
+{
+    "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "toolUse": {
+                        "toolUseId": "tooluse_kZJMlvQmRJ6eAyJE5GIl7Q",
+                        "name": "top_song",
+                        "input": {
+                            "sign": "WZPZ"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "stopReason": "tool_use"
+}
+# Make tool request for the model
+{
+    "role": "user",
+    "content": [
+        {
+            "toolResult": {
+                "toolUseId": "tooluse_kZJMlvQmRJ6eAyJE5GIl7Q",
+                "content": [
+                    {
+                        "json": {
+                            "song": "Elemental Hotel",
+                            "artist": "8 Storey Hike"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+# Handle error
+{
+    "role": "user",
+    "content": [
+        {
+            "toolResult": {
+                "toolUseId": "tooluse_kZJMlvQmRJ6eAyJE5GIl7Q",
+                "content": [
+                    {
+                        "text": "Station WZPA not found."
+                    }
+                ],
+                "status": "error"
+            }
+        }
+    ]
+}
+# Get model response
+{
+     "output": {
+        "message": {
+            "role": "assistant",
+            "content": [
+                {
+                    "text": "The most popular song on WZPZ is Elemental Hotel by 8 Storey Hike."
+                }
+            ]
+        }
+    },
+    "stopReason": "end_turn"
+}

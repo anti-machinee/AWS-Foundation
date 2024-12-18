@@ -124,7 +124,28 @@
     - Check the API docs
 
 # Use a tool to complete an Amazon Bedrock model response
+- A tool is a function calling. Give a model access to tools that can help to generate
+- You call tool on the model's behalf. The tool implementation is an API. 
+- The tool can be database, lambda function or other software
+## Call a tool with the Converse API
+- Send message and definition for tools to the model
+- If model determines one of tools can help generate a response, it returns a request for you to use the tool and send the tool results back to model
+- The model uses the results to generate a response to original message
 
 # Use a computer use tool to complete an Amazon Bedrock model response
+- TODO: 
 
 # Prompt caching for faster model inference
+- Add portions of conversations to a cache. Model can reuse the context
+- Can use to cache documents (when users upload) to context
+- Cache checkpoint
+    - Require to use mimimum number of tokens. If add cache checkpoint but less than minimum, checkpoint is not added to cache
+- Time to live (TTL)
+    - Reset with each successful cache hit
+    - Context in cache is preserved in TTL
+    - If no cache hits occur, cache expires
+    - Can reuse previous cached context
+- Support
+    - Need to check
+    - Quite limited
+- 
